@@ -7,30 +7,23 @@ import ListContainer from "../components/ListContainer";
 import CircleButton from "../components/CircleButton";
 import google from "../assets/google.svg";
 import TextField from "../components/TextField";
+import { useUsers } from "../hooks/useUser";
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [users, setUsers] = useState([]);
+  const { users, loading, setUsers, deleteUser } = useUsers();
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => {
-      const users = createFakeUsers(10);
-      setUsers(users);
-      setLoading(false);
-    }, 750);
   }, []);
+
+  console.log("users :>> ", users);
 
   const createUser = () => {
     // setUsers([...createFakeUsers(1), ...users]);
     setUsers((users) => [...createFakeUsers(1), ...users]);
   };
 
-  const deleteUser = (id) => {
-    console.log("id :>> ", id);
-    setUsers(users.filter((user) => user.id !== id));
-  };
+  
 
   const filtered = useMemo(() => {
     if (!search) return users;
@@ -57,6 +50,7 @@ function App() {
             <ListItem
               key={user.id}
               name={user.name}
+              avatar={user.avatar}
               onClick={() => deleteUser(user.id)}
             />
           ))}
