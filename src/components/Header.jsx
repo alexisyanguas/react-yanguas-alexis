@@ -9,29 +9,28 @@ const Header = () => {
       <h1>Header</h1>
       <a href={"/users"}>Users</a>
       <a href={"/posts"}>Posts</a>
+      <a href={"/context"}>Context</a>
     </HeaderStyled>
   );
 };
 
 const HeaderStyled = styled.header`
-    background-color: #333;
+  background-color: #333;
+  color: #fff;
+  padding: 1rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  column-gap: 1rem;
+  a {
+    text-decoration: none;
     color: #fff;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    column-gap: 1rem;
-    a {
-        text-decoration: none;
-        color: #fff;
-        font-size: 1.5rem;
-        font-weight: 600;
-        &:hover {
-            color: #eee;
-        }
+    font-size: 1.5rem;
+    font-weight: 600;
+    &:hover {
+      color: #eee;
     }
+  }
 `;
-
-
 
 export default Header;
